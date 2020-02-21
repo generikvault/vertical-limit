@@ -10,14 +10,39 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.vertical-jump.cursorBlockFirstLine",
+		"onCommand:extension.vertical-jump.cursorBlockLastLine",
+		"onCommand:extension.vertical-jump.cursorBlockFirstLineSelect",
+		"onCommand:extension.vertical-jump.cursorBlockLastLineSelect",
+		"onCommand:extension.vertical-jump.multiCursorBlockFirstLine",
+		"onCommand:extension.vertical-jump.multiCursorsBlockLastLine"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.vertical-jump.cursorBlockFirstLine",
+				"title": "Jump Cursor To First Line Of Block"
+			},
+			{
+				"command": "extension.vertical-jump.cursorBlockLastLine",
+				"title": "Jump Cursor To Last Line Of Block"
+			},
+			{
+				"command": "extension.vertical-jump.cursorBlockFirstLineSelect",
+				"title": "Select Until First Line Of Block"
+			},
+			{
+				"command": "extension.vertical-jump.cursorBlockLastLineSelect",
+				"title": "Select Until Last Line Of Block"
+			},
+			{
+				"command": "extension.vertical-jump.multiCursorBlockFirstLine",
+				"title": "Insert Cursors Until First Line Of Block"
+			},
+			{
+				"command": "extension.vertical-jump.multiCursorsBlockLastLine",
+				"title": "Insert Cursors Until Last Line Of Block"
 			}
 		]
 	},
