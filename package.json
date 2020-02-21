@@ -2,7 +2,7 @@
 	"name": "vertical-jump",
 	"displayName": "Vertical Jump",
 	"description": "Jump tof a text block.he cursor to the begin or end of a block.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.42.0"
 	},
