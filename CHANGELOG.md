@@ -4,7 +4,16 @@ All notable changes to the "vertical-jump" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## 1.0
+## [1.1.0] - 2020-02-21
+
+### Changed
+
+- Command to insert cursors until the first line of a block
+  - Inserts commands only after reaching the first line of the block
+- Command to insert cursors until the last line of a block
+  - Inserts commands only after reaching the first line of the block
+
+## [1.0.0] - 2020-02-21
 
 ### Added
 

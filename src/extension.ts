@@ -92,7 +92,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 		let selections = []
 		while (bp.dec())
-			selections.push(bp.selection)
+			if (bp.inside)
+				selections.push(bp.selection)
 		editor.selections = selections.reverse().concat(editor.selections);
 	});
 
@@ -104,25 +105,26 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		var end = editor.selections
-		.map(sel => sel.end)
+			.map(sel => sel.end)
 			.reduce(max)
 
 		var bp = new BlockPosition(editor.document, end)
 
 		let selections = []
 		while (bp.inc())
-			selections.push(bp.selection)
+			if (bp.inside)
+				selections.push(bp.selection)
 		editor.selections = selections.reverse().concat(editor.selections);
 	});
 
 	context.subscriptions.push(up, down, selectUp, selectDown, insertUp, insertDown);
 }
 
-function min(a:vscode.Position, b: vscode.Position):vscode.Position{
+function min(a: vscode.Position, b: vscode.Position): vscode.Position {
 	return a.isBefore(b) ? a : b
 }
 
-function max(a:vscode.Position, b: vscode.Position):vscode.Position{
+function max(a: vscode.Position, b: vscode.Position): vscode.Position {
 	return a.isAfter(b) ? a : b
 }
 
@@ -130,7 +132,7 @@ class BlockPosition {
 	private doc: vscode.TextDocument
 	private pos: vscode.Position
 	private line: number
-	private inside = false
+	inside = false
 	private indent: number
 
 	constructor(doc: vscode.TextDocument, pos: vscode.Position) {
