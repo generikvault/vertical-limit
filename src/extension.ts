@@ -16,11 +16,14 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		var bp = new BlockPosition(editor.document, editor.selection.start)
+		let document = editor.document
 
-		while (bp.dec());
+		editor.selections = editor.selections.map(selection => {
+			var bp = new BlockPosition(document, selection.start)
 
-		editor.selections = [bp.selection];
+			while (bp.dec());
+			return bp.selection
+		})
 	});
 
 	let down = vscode.commands.registerCommand('extension.vertical-jump.cursorBlockLastLine', () => {
@@ -30,11 +33,14 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		var bp = new BlockPosition(editor.document, editor.selection.end)
+		let document = editor.document
 
-		while (bp.inc());
+		editor.selections = editor.selections.map(selection => {
+			var bp = new BlockPosition(document, selection.end)
 
-		editor.selections = [bp.selection];
+			while (bp.inc());
+			return bp.selection
+		})
 	});
 
 	let selectUp = vscode.commands.registerCommand('extension.vertical-jump.cursorBlockFirstLineSelect', () => {
@@ -44,11 +50,14 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		var bp = new BlockPosition(editor.document, editor.selection.start)
+		let document = editor.document
 
-		while (bp.dec());
+		editor.selections = editor.selections.map(selection => {
+			var bp = new BlockPosition(document, selection.start)
 
-		editor.selections = [bp.selectionFromStart];
+			while (bp.dec());
+			return new vscode.Selection(selection.end, bp.position)
+		})
 	});
 
 	let selectDown = vscode.commands.registerCommand('extension.vertical-jump.cursorBlockLastLineSelect', () => {
@@ -58,11 +67,14 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		var bp = new BlockPosition(editor.document, editor.selection.end)
+		let document = editor.document
+		editor.selections = editor.selections.map(selection => {
+			var bp = new BlockPosition(document, selection.end)
 
-		while (bp.inc());
+			while (bp.inc());
 
-		editor.selections = [bp.selectionFromStart];
+			return new vscode.Selection(selection.start, bp.position)
+		})
 	});
 
 	let insertUp = vscode.commands.registerCommand('extension.vertical-jump.multiCursorBlockFirstLine', () => {
@@ -72,12 +84,16 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		var bp = new BlockPosition(editor.document, editor.selection.start)
+		var start = editor.selections
+			.map(sel => sel.start)
+			.reduce(min)
+
+		var bp = new BlockPosition(editor.document, start)
 
 		let selections = []
 		while (bp.dec())
 			selections.push(bp.selection)
-		editor.selections = selections;
+		editor.selections = selections.reverse().concat(editor.selections);
 	});
 
 	let insertDown = vscode.commands.registerCommand('extension.vertical-jump.multiCursorsBlockLastLine', () => {
@@ -87,15 +103,27 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		var bp = new BlockPosition(editor.document, editor.selection.end)
+		var end = editor.selections
+		.map(sel => sel.end)
+			.reduce(max)
+
+		var bp = new BlockPosition(editor.document, end)
 
 		let selections = []
 		while (bp.inc())
 			selections.push(bp.selection)
-		editor.selections = selections;
+		editor.selections = selections.reverse().concat(editor.selections);
 	});
 
 	context.subscriptions.push(up, down, selectUp, selectDown, insertUp, insertDown);
+}
+
+function min(a:vscode.Position, b: vscode.Position):vscode.Position{
+	return a.isBefore(b) ? a : b
+}
+
+function max(a:vscode.Position, b: vscode.Position):vscode.Position{
+	return a.isAfter(b) ? a : b
 }
 
 class BlockPosition {
@@ -137,7 +165,10 @@ class BlockPosition {
 	}
 
 	private indentAt(line: number): number {
-		return this.doc.lineAt(line).firstNonWhitespaceCharacterIndex
+		let s = this.doc.lineAt(line)
+		if (s.isEmptyOrWhitespace)
+			return -1
+		return s.firstNonWhitespaceCharacterIndex
 	}
 
 	get position(): vscode.Position {
@@ -147,10 +178,6 @@ class BlockPosition {
 	get selection(): vscode.Selection {
 		var pos = this.position
 		return new vscode.Selection(pos, pos);
-	}
-
-	get selectionFromStart(): vscode.Selection {
-		return new vscode.Selection(this.pos, this.position);
 	}
 
 }

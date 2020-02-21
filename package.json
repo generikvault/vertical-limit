@@ -44,6 +44,28 @@
 				"command": "extension.vertical-jump.multiCursorsBlockLastLine",
 				"title": "Insert Cursors Until Last Line Of Block"
 			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.vertical-jump.cursorBlockFirstLine",
+				"key": "ctrl+up",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.vertical-jump.cursorBlockLastLine",
+				"key": "ctrl+down",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.vertical-jump.cursorBlockFirstLineSelect",
+				"key": "ctrl+shift+up",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "extension.vertical-jump.cursorBlockLastLineSelect",
+				"key": "ctrl+shift+down",
+				"when": "editorTextFocus"
+			}
 		]
 	},
 	"scripts": {
