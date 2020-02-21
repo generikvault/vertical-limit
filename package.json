@@ -9,6 +9,7 @@
 	"categories": [
 		"Other"
 	],
+	"publisher": "vertical-jump-publisher",
 	"activationEvents": [
 		"onCommand:extension.vertical-jump.cursorBlockFirstLine",
 		"onCommand:extension.vertical-jump.cursorBlockLastLine",
