@@ -4,6 +4,13 @@ All notable changes to the "vertical-jump" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## 1.0
 
-- Initial release
+### Added
+
+- Command to jump to the first line of a block
+- Command to jump to the last line of a block
+- Command to select text until the first line of a block
+- Command to select text until the last line of a block
+- Command to insert cursors until the first line of a block
+- Command to insert cursors until the last line of a block

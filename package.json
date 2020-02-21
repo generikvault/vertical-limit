@@ -1,6 +1,6 @@
 {
 	"name": "vertical-jump",
-	"displayName": "VerticalJump",
+	"displayName": "Vertical Jump",
 	"description": "Jump tof a text block.he cursor to the begin or end of a block.",
 	"version": "0.0.1",
 	"engines": {
