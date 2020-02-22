@@ -24,6 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 			while (bp.dec());
 			return bp.selection
 		})
+		editor.revealRange(editor.selection)
 	});
 
 	let down = vscode.commands.registerCommand('extension.vertical-jump.cursorBlockLastLine', () => {
@@ -41,6 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 			while (bp.inc());
 			return bp.selection
 		})
+		editor.revealRange(editor.selection)
 	});
 
 	let selectUp = vscode.commands.registerCommand('extension.vertical-jump.cursorBlockFirstLineSelect', () => {
@@ -58,6 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
 			while (bp.dec());
 			return new vscode.Selection(selection.end, bp.position)
 		})
+		editor.revealRange(new vscode.Selection(editor.selection.active, editor.selection.active))
 	});
 
 	let selectDown = vscode.commands.registerCommand('extension.vertical-jump.cursorBlockLastLineSelect', () => {
@@ -75,6 +78,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			return new vscode.Selection(selection.start, bp.position)
 		})
+		editor.revealRange(new vscode.Selection(editor.selection.active, editor.selection.active))
 	});
 
 	let insertUp = vscode.commands.registerCommand('extension.vertical-jump.multiCursorBlockFirstLine', () => {
@@ -95,6 +99,7 @@ export function activate(context: vscode.ExtensionContext) {
 			if (bp.inside)
 				selections.push(bp.selection)
 		editor.selections = selections.reverse().concat(editor.selections);
+		editor.revealRange(editor.selection)
 	});
 
 	let insertDown = vscode.commands.registerCommand('extension.vertical-jump.multiCursorsBlockLastLine', () => {
@@ -115,6 +120,7 @@ export function activate(context: vscode.ExtensionContext) {
 			if (bp.inside)
 				selections.push(bp.selection)
 		editor.selections = selections.reverse().concat(editor.selections);
+		editor.revealRange(editor.selection)
 	});
 
 	context.subscriptions.push(up, down, selectUp, selectDown, insertUp, insertDown);

@@ -4,6 +4,12 @@ All notable changes to the "vertical-jump" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.2.0]- 2020-02-22
+
+### Changed
+
+- Reveal active cursor position in editor after jumping
+
 ## [1.1.0] - 2020-02-21
 
 ### Changed
