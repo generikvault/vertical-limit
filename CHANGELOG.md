@@ -4,6 +4,12 @@ All notable changes to the "vertical-jump" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.3.0]- 2020-02-28
+
+### Changed
+
+- Keep the order of inserted new cursors in order to work with multicursor commands like enumerate.
+
 ## [1.2.0]- 2020-02-22
 
 ### Changed

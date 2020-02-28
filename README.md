@@ -1,6 +1,6 @@
 # Vertical Jump
 
-Vertical Jump provides commands to control cursor and selection based on the block structure of the document.
+Vertical Jump provides commands to control cursor and selection based on the block structure of the document. All commands are multi cursor compatiple.
 
 ## Definition of Block
 

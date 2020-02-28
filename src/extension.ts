@@ -94,12 +94,13 @@ export function activate(context: vscode.ExtensionContext) {
 
 		var bp = new BlockPosition(editor.document, start)
 
-		let selections = []
 		while (bp.dec())
 			if (bp.inside)
-				selections.push(bp.selection)
-		editor.selections = selections.reverse().concat(editor.selections);
-		editor.revealRange(editor.selection)
+				editor.selections.push(bp.selection)
+				
+		editor.selections = editor.selections
+		var lastSelection = editor.selections[editor.selections.length - 1]
+		editor.revealRange(lastSelection)
 	});
 
 	let insertDown = vscode.commands.registerCommand('extension.vertical-jump.multiCursorsBlockLastLine', () => {
@@ -115,12 +116,13 @@ export function activate(context: vscode.ExtensionContext) {
 
 		var bp = new BlockPosition(editor.document, end)
 
-		let selections = []
 		while (bp.inc())
 			if (bp.inside)
-				selections.push(bp.selection)
-		editor.selections = selections.reverse().concat(editor.selections);
-		editor.revealRange(editor.selection)
+				editor.selections.push(bp.selection)
+
+		editor.selections = editor.selections
+		var lastSelection = editor.selections[editor.selections.length - 1]
+		editor.revealRange(lastSelection)
 	});
 
 	context.subscriptions.push(up, down, selectUp, selectDown, insertUp, insertDown);
@@ -162,7 +164,7 @@ class BlockPosition {
 		return this.jump(line)
 	}
 
-	jump(line: number): boolean {
+	private jump(line: number): boolean {
 		let matchs = this.indentAt(line) == this.indent
 		this.inside = this.inside || matchs
 		if (!matchs && this.inside)
