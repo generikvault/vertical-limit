@@ -1,8 +1,15 @@
 # Change Log
 
-All notable changes to the "vertical-jump" extension will be documented in this file.
+All notable changes to the "vertical-limit" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+
+## [1.3.0]- 2020-02-28
+
+### Changed
+
+- Forked vertical jump.
+- Added enumerate command.
 
 ## [1.3.0]- 2020-02-28
 

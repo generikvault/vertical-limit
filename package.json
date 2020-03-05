@@ -1,73 +1,78 @@
 {
-	"name": "vertical-jump",
-	"displayName": "Vertical Jump",
-	"description": "Move the cursor or selection to the begin or end of a text block.",
-	"version": "1.3.0",
+	"name": "vertical-limit",
+	"displayName": "Vertical Limit",
+	"description": "Vertical Limit is a collection of commands to modify, select and navigate text blocks in order to unlock the full potential of working with multiple cursors.",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.42.0"
 	},
 	"categories": [
 		"Other"
 	],
-	"publisher": "vertical-jump-publisher",
+	"publisher": "generik",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/generikvault/vertical-jump"
+		"url": "https://github.com/generikvault/vertical-limit"
 	},
 	"activationEvents": [
-		"onCommand:extension.vertical-jump.cursorBlockFirstLine",
-		"onCommand:extension.vertical-jump.cursorBlockLastLine",
-		"onCommand:extension.vertical-jump.cursorBlockFirstLineSelect",
-		"onCommand:extension.vertical-jump.cursorBlockLastLineSelect",
-		"onCommand:extension.vertical-jump.multiCursorBlockFirstLine",
-		"onCommand:extension.vertical-jump.multiCursorsBlockLastLine"
+		"onCommand:vertical-limit.moveCursorFirstBlockLine",
+		"onCommand:vertical-limit.moveCursorLastBlockLine",
+		"onCommand:vertical-limit.selectUntilBlockFirstLine",
+		"onCommand:vertical-limit.selectUntilBlockLastLine",
+		"onCommand:vertical-limit.insertCursorsUntilFirstBlockLine",
+		"onCommand:vertical-limit.insertCursorsUntilLastBlockLinee",
+		"onCommand:vertical-limit.enumerate"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.vertical-jump.cursorBlockFirstLine",
+				"command": "vertical-limit.moveCursorFirstBlockLine",
 				"title": "Jump Cursor To First Line Of Block"
 			},
 			{
-				"command": "extension.vertical-jump.cursorBlockLastLine",
+				"command": "vertical-limit.moveCursorLastBlockLine",
 				"title": "Jump Cursor To Last Line Of Block"
 			},
 			{
-				"command": "extension.vertical-jump.cursorBlockFirstLineSelect",
+				"command": "vertical-limit.selectUntilBlockFirstLine",
 				"title": "Select Until First Line Of Block"
 			},
 			{
-				"command": "extension.vertical-jump.cursorBlockLastLineSelect",
+				"command": "vertical-limit.selectUntilBlockLastLine",
 				"title": "Select Until Last Line Of Block"
 			},
 			{
-				"command": "extension.vertical-jump.multiCursorBlockFirstLine",
+				"command": "vertical-limit.insertCursorsUntilFirstBlockLine",
 				"title": "Insert Cursors Until First Line Of Block"
 			},
 			{
-				"command": "extension.vertical-jump.multiCursorsBlockLastLine",
+				"command": "vertical-limit.insertCursorsUntilLastBlockLine",
 				"title": "Insert Cursors Until Last Line Of Block"
+			},
+			{
+				"command": "vertical-limit.enumerate",
+				"title": "Insert Enumerations"
 			}
 		],
 		"keybindings": [
 			{
-				"command": "extension.vertical-jump.cursorBlockFirstLine",
+				"command": "vertical-limit.moveCursorFirstBlockLine",
 				"key": "ctrl+up",
 				"when": "editorTextFocus"
 			},
 			{
-				"command": "extension.vertical-jump.cursorBlockLastLine",
+				"command": "vertical-limit.moveCursorLastBlockLine",
 				"key": "ctrl+down",
 				"when": "editorTextFocus"
 			},
 			{
-				"command": "extension.vertical-jump.cursorBlockFirstLineSelect",
+				"command": "vertical-limit.selectUntilBlockFirstLine",
 				"key": "ctrl+shift+up",
 				"when": "editorTextFocus"
 			},
 			{
-				"command": "extension.vertical-jump.cursorBlockLastLineSelect",
+				"command": "vertical-limit.selectUntilBlockLastLine",
 				"key": "ctrl+shift+down",
 				"when": "editorTextFocus"
 			}
