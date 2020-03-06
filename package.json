@@ -21,7 +21,9 @@
 		"onCommand:vertical-limit.selectUntilBlockLastLine",
 		"onCommand:vertical-limit.insertCursorsUntilFirstBlockLine",
 		"onCommand:vertical-limit.insertCursorsUntilLastBlockLinee",
-		"onCommand:vertical-limit.enumerate"
+		"onCommand:vertical-limit.enumerate",
+		"onCommand:vertical-limit.moveSelectionToNewFile",
+		"onCommand:vertical-limit.moveUnsavedFileToClipboard"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -53,6 +55,14 @@
 			{
 				"command": "vertical-limit.enumerate",
 				"title": "Insert Enumerations"
+			},
+			{
+				"command": "vertical-limit.moveSelectionToNewFile",
+				"title": "Moves the current selection to a new file"
+			},
+			{
+				"command": "vertical-limit.moveUnsavedFileToClipboard",
+				"title": "Moves the content of the current and unsaved file into the clipboard and closes the file"
 			}
 		],
 		"keybindings": [
@@ -75,8 +85,63 @@
 				"command": "vertical-limit.selectUntilBlockLastLine",
 				"key": "ctrl+shift+down",
 				"when": "editorTextFocus"
+			},
+			{
+				"command": "vertical-limit.enumerate",
+				"key": "alt+e",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"command": "vertical-limit.moveSelectionToNewFile",
+				"key": "alt+n",
+				"when": "editorTextFocus && !editorReadonly"
+			},
+			{
+				"command": "vertical-limit.moveUnsavedFileToClipboard",
+				"key": "alt+x",
+				"when": "editorTextFocus && resourceScheme == untitled && !editorReadonly"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "vertical-limit.moveCursorFirstBlockLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.moveCursorLastBlockLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.selectUntilBlockFirstLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.selectUntilBlockLastLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.insertCursorsUntilFirstBlockLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.insertCursorsUntilLastBlockLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.enumerate",
+					"when": "editorIsOpen && !editorReadonly"
+				},
+				{
+					"command": "vertical-limit.moveSelectionToNewFile",
+					"when": "editorIsOpen && !editorReadonly"
+				},
+				{
+					"command": "vertical-limit.moveUnsavedFileToClipboard",
+					"when": "editorIsOpen && resourceScheme == untitled && !editorReadonly"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

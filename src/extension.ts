@@ -3,7 +3,8 @@
 'use strict';
 import * as vscode from 'vscode';
 import * as blocks from './blocks';
-import * as edit from './enumerate';
+import * as enumerate from './enumerate';
+import * as movetonew from './movetonew';
 
 
 
@@ -43,7 +44,9 @@ export function activate(context: vscode.ExtensionContext) {
 		inBlockEditor('vertical-limit.selectUntilBlockLastLine', blocks.selectUntilBlockLastLine),
 		inBlockEditor('vertical-limit.insertCursorsUntilFirstBlockLine', blocks.insertCursorsUntilFirstBlockLine),
 		inBlockEditor('vertical-limit.insertCursorsUntilLastBlockLine', blocks.insertCursorsUntilLastBlockLine),
-		inEditor('vertical-limit.enumerate', edit.enumerate),
+		inEditor('vertical-limit.enumerate', enumerate.enumerate),
+		inEditor('vertical-limit.moveSelectionToNewFile', movetonew.moveSelectionToNewFile),
+		inEditor('vertical-limit.moveUnsavedFileToClipboard', movetonew.moveUnsavedFileToClipboard),
 	);
 }
 

@@ -26,6 +26,12 @@ The user can provide:
 - the minimal number of how many times an enumeration should be inserted
 - a comma seperated alternativ list of enumerations
 
+### Move Selection to new File
+
+Vertical Limit provides a command to move the selected text into a new unsaved file.
+For unsaved files Vertical Limit provides a command to cut all content into the clipboard and close the file.
+This can be used to undo the Move Selection to new File into new File command.
+
 ## Glossary
 
 ### Block

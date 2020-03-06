@@ -4,7 +4,15 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [1.3.0]- 2020-02-28
+## [1.5.0]- 2020-03-06
+
+### Changed
+
+- Added move selection to new file command.
+- Added command to cut all content of an unsaved file and close it.
+- Added shortcut alt e for enumerate.
+
+## [1.4.0]- 2020-03-05
 
 ### Changed
 
