@@ -23,7 +23,9 @@
 		"onCommand:vertical-limit.insertCursorsUntilLastBlockLinee",
 		"onCommand:vertical-limit.enumerate",
 		"onCommand:vertical-limit.moveSelectionToNewFile",
-		"onCommand:vertical-limit.moveUnsavedFileToClipboard"
+		"onCommand:vertical-limit.moveUnsavedFileToClipboard",
+		"onCommand:vertical-limit.compressLines",
+		"onCommand:vertical-limit.uncompressLines"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -54,7 +56,7 @@
 			},
 			{
 				"command": "vertical-limit.enumerate",
-				"title": "Insert Enumerations"
+				"title": "Enumerate"
 			},
 			{
 				"command": "vertical-limit.moveSelectionToNewFile",
@@ -63,6 +65,14 @@
 			{
 				"command": "vertical-limit.moveUnsavedFileToClipboard",
 				"title": "Moves the content of the current and unsaved file into the clipboard and closes the file"
+			},
+			{
+				"command": "vertical-limit.compressLines",
+				"title": "Compress following lines with the same prefix into a single line"
+			},
+			{
+				"command": "vertical-limit.uncompressLines",
+				"title": "Uncompress lines matching the prefix pattern into a line for each segment"
 			}
 		],
 		"keybindings": [
@@ -139,6 +149,14 @@
 				{
 					"command": "vertical-limit.moveUnsavedFileToClipboard",
 					"when": "editorIsOpen && resourceScheme == untitled && !editorReadonly"
+				},
+				{
+					"command": "vertical-limit.compressLines",
+					"when": "editorIsOpen && !editorReadonly"
+				},
+				{
+					"command": "vertical-limit.uncompressLines",
+					"when": "editorIsOpen && !editorReadonly"
 				}
 			]
 		}

@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import * as blocks from './blocks';
 import * as enumerate from './enumerate';
 import * as movetonew from './movetonew';
+import * as compresslines from './compresslines';
 
 
 
@@ -47,6 +48,8 @@ export function activate(context: vscode.ExtensionContext) {
 		inEditor('vertical-limit.enumerate', enumerate.enumerate),
 		inEditor('vertical-limit.moveSelectionToNewFile', movetonew.moveSelectionToNewFile),
 		inEditor('vertical-limit.moveUnsavedFileToClipboard', movetonew.moveUnsavedFileToClipboard),
+		inEditor('vertical-limit.compressLines', compresslines.compressLines),
+		inEditor('vertical-limit.uncompressLines', compresslines.uncompressLines),
 	);
 }
 

@@ -4,6 +4,13 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.6.0]- 2020-03-06
+
+### Changed
+
+- Added command to compress following lines with the same prefix into a single line.
+- Added opposing command to uncompress lines matching the prefix pattern into a line for each segment.
+
 ## [1.5.0]- 2020-03-06
 
 ### Changed
