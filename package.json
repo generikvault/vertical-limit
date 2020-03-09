@@ -20,7 +20,7 @@
 		"onCommand:vertical-limit.selectUntilBlockFirstLine",
 		"onCommand:vertical-limit.selectUntilBlockLastLine",
 		"onCommand:vertical-limit.insertCursorsUntilFirstBlockLine",
-		"onCommand:vertical-limit.insertCursorsUntilLastBlockLinee",
+		"onCommand:vertical-limit.insertCursorsUntilLastBlockLine",
 		"onCommand:vertical-limit.moveCursorToBlockBegin",
 		"onCommand:vertical-limit.moveCursorToBlockEnd",
 		"onCommand:vertical-limit.selectUntilBlockBegin",
