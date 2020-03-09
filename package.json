@@ -21,6 +21,10 @@
 		"onCommand:vertical-limit.selectUntilBlockLastLine",
 		"onCommand:vertical-limit.insertCursorsUntilFirstBlockLine",
 		"onCommand:vertical-limit.insertCursorsUntilLastBlockLinee",
+		"onCommand:vertical-limit.moveCursorToBlockBegin",
+		"onCommand:vertical-limit.moveCursorToBlockEnd",
+		"onCommand:vertical-limit.selectUntilBlockBegin",
+		"onCommand:vertical-limit.selectUntilBlockEnd",
 		"onCommand:vertical-limit.enumerate",
 		"onCommand:vertical-limit.moveSelectionToNewFile",
 		"onCommand:vertical-limit.moveUnsavedFileToClipboard",
@@ -32,27 +36,43 @@
 		"commands": [
 			{
 				"command": "vertical-limit.moveCursorFirstBlockLine",
-				"title": "Jump Cursor To First Line Of Block"
+				"title": "Move cursor to first line of the current block"
 			},
 			{
 				"command": "vertical-limit.moveCursorLastBlockLine",
-				"title": "Jump Cursor To Last Line Of Block"
+				"title": "Move cursor to last line of the current block"
 			},
 			{
 				"command": "vertical-limit.selectUntilBlockFirstLine",
-				"title": "Select Until First Line Of Block"
+				"title": "Select until first line of the current block"
 			},
 			{
 				"command": "vertical-limit.selectUntilBlockLastLine",
-				"title": "Select Until Last Line Of Block"
+				"title": "Select until last line of the current block"
 			},
 			{
 				"command": "vertical-limit.insertCursorsUntilFirstBlockLine",
-				"title": "Insert Cursors Until First Line Of Block"
+				"title": "Insert cursors until first line of the current block"
 			},
 			{
 				"command": "vertical-limit.insertCursorsUntilLastBlockLine",
-				"title": "Insert Cursors Until Last Line Of Block"
+				"title": "Insert cursors until last line of the current block"
+			},
+			{
+				"command": "vertical-limit.moveCursorToBlockBegin",
+				"title": "Move cursor to begin of the current block"
+			},
+			{
+				"command": "vertical-limit.moveCursorToBlockEnd",
+				"title": "Move cursor to end of the current block"
+			},
+			{
+				"command": "vertical-limit.selectUntilBlockBegin",
+				"title": "Select until first begin of the current block"
+			},
+			{
+				"command": "vertical-limit.selectUntilBlockEnd",
+				"title": "Select until last end of the current block"
 			},
 			{
 				"command": "vertical-limit.enumerate",
@@ -94,6 +114,26 @@
 			{
 				"command": "vertical-limit.selectUntilBlockLastLine",
 				"key": "ctrl+shift+down",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "vertical-limit.moveCursorToBlockBegin",
+				"key": "ctrl+home",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "vertical-limit.moveCursorToBlockEnd",
+				"key": "ctrl+end",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "vertical-limit.selectUntilBlockBegin",
+				"key": "ctrl+shift+home",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "vertical-limit.selectUntilBlockEnd",
+				"key": "ctrl+shift+end",
 				"when": "editorTextFocus"
 			},
 			{

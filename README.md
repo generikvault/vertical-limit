@@ -8,14 +8,18 @@ Vertical Limit is a collection of commands to modify, select and navigate text b
 
 Vertical Limit provides cursor navigation commands to:
 
-- jump to the first line of a block.
-- jump to the last line of a block.
+- move to the first line of a block.
+- move to the last line of a block.
 - select text until the first line of a block.
 - select text until the last line of a block.
 - insert cursors until the first line of a block.
 - insert cursors until the last line of a block.
+- move cursor to begin of block.
+- move cursor to end of block.
+- extend selection to begin of block.
+- extend selection to end of block.
 
-### Enumeration
+### Enumerate
 
 Vertical Limit provides a command to insert an enumeration in all active selections.
 
@@ -37,3 +41,9 @@ This can be used to undo the Move Selection to new File into new File command.
 ### Block
 
 A Block consists of line up text lines with the same indentation. Empty lines are consideres as indented by `-1` so that they seperate unindented lines.
+
+### Move To Begin / End Of Block
+
+The begin of a block is the first position inside the block.
+If the cursor is already there it moves instead to begin of the first block with the same indentation inside the very next outer block.
+If the cursor is already there it moves instead to begin of the very next outer block.

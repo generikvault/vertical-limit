@@ -54,8 +54,8 @@ export async function uncompressLines(editor: vscode.TextEditor) {
 }
 
 class Deltas {
-    document: vscode.TextDocument
-    deltas: { from: number, to: number, text: string }[] = []
+    private document: vscode.TextDocument
+    private deltas: { from: number, to: number, text: string }[] = []
 
     constructor(document: vscode.TextDocument) {
         this.document = document
