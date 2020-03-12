@@ -4,7 +4,7 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [1.7.0]- 2020-03-09
+## [1.7.0] - 2020-03-09
 
 ### Changed
 
@@ -13,14 +13,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Added command to extend selection to begin of block.
 - Added command to extend selection to end of block.
 
-## [1.6.0]- 2020-03-06
+## [1.6.0] - 2020-03-06
 
 ### Changed
 
 - Added command to compress following lines with the same prefix into a single line.
 - Added opposing command to uncompress lines matching the prefix pattern into a line for each segment.
 
-## [1.5.0]- 2020-03-06
+## [1.5.0] - 2020-03-06
 
 ### Added
 
@@ -28,7 +28,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Added command to cut all content of an unsaved file and close it.
 - Added shortcut alt e for enumerate.
 
-## [1.4.0]- 2020-03-05
+## [1.4.0] - 2020-03-05
 
 ### Added
 
@@ -38,13 +38,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Forked vertical jump.
 
-## [1.3.0]- 2020-02-28
+## [1.3.0] - 2020-02-28
 
 ### Changed
 
 - Keep the order of inserted new cursors in order to work with multicursor commands like enumerate.
 
-## [1.2.0]- 2020-02-22
+## [1.2.0] - 2020-02-22
 
 ### Changed
 
