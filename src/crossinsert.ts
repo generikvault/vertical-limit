@@ -45,3 +45,72 @@ export async function crossInsert(editor: vscode.TextEditor) {
 //         return NaN
 //     }
 // }
+
+// "contributes": {
+//     "configurationDefaults": {
+//       "[go]": {
+//         "editor.insertSpaces": false,
+//         "editor.formatOnSave": true,
+//         "editor.codeActionsOnSave": {
+//           "source.organizeImports": true
+//         }
+//       }
+//     },
+//     "configuration": {
+//       "type": "object",
+//       "title": "Go",
+//       "properties": {
+//         "go.buildOnSave": {
+//           "type": "string",
+//           "enum": [
+//             "package",
+//             "workspace",
+//             "off"
+//           ],
+//           "default": "package",
+//           "description": "Compiles code on file save using 'go build -i' or 'go test -c -i'. Options are 'workspace', 'package', or 'off'.",
+//           "scope": "resource"
+//         },
+//         "go.buildFlags": {
+//           "type": "array",
+//           "items": {
+//             "type": "string"
+//           },
+//           "default": [],
+//           "description": "Flags to `go build`/`go test` used during build-on-save or running tests. (e.g. [\"-ldflags='-s'\"])",
+//           "scope": "resource"
+//         },
+//         "go.buildTags": {
+//           "type": "string",
+//           "default": "",
+//           "description": "The Go build tags to use for all commands, that support a `-tags '...'` argument. When running tests, go.testTags will be used instead if it was set.",
+//           "scope": "resource"
+//         },
+//         "go.testTags": {
+//           "type": [
+//             "string",
+//             "null"
+//           ],
+//           "default": null,
+//           "description": "The Go build tags to use for when running tests. If null, then buildTags will be used.",
+//           "scope": "resource"
+//         },
+//         "go.installDependenciesWhenBuilding": {
+//           "type": "boolean",
+//           "default": true,
+//           "description": "If true, then `-i` flag will be passed to `go build` everytime the code is compiled.",
+//           "scope": "resource"
+//         },
+
+
+//         import { env } from "vscode";
+
+// export interface Clipboard {
+//     write(content: string): Thenable<void>;
+// }
+
+// export class ClipboardImpl implements Clipboard {
+//     public write(content: string): Thenable<void> {
+//         return env.clipboard.writeText(content);
+//     }
+// }
