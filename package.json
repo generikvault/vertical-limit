@@ -29,7 +29,8 @@
 		"onCommand:vertical-limit.moveSelectionToNewFile",
 		"onCommand:vertical-limit.moveUnsavedFileToClipboard",
 		"onCommand:vertical-limit.compressLines",
-		"onCommand:vertical-limit.uncompressLines"
+		"onCommand:vertical-limit.uncompressLines",
+		"onCommand:vertical-limit.insertAsColumn"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -93,6 +94,10 @@
 			{
 				"command": "vertical-limit.uncompressLines",
 				"title": "Uncompress lines matching the prefix pattern into a line for each segment"
+			},
+			{
+				"command": "vertical-limit.insertAsColumn",
+				"title": "Insert clipboard as column"
 			}
 		],
 		"keybindings": [
@@ -150,6 +155,11 @@
 				"command": "vertical-limit.moveUnsavedFileToClipboard",
 				"key": "alt+x",
 				"when": "editorTextFocus && resourceScheme == untitled && !editorReadonly"
+			},
+			{
+				"command": "vertical-limit.insertAsColumn",
+				"key": "alt+v",
+				"when": "editorTextFocus && !editorReadonly"
 			}
 		],
 		"menus": {
@@ -196,6 +206,10 @@
 				},
 				{
 					"command": "vertical-limit.uncompressLines",
+					"when": "editorIsOpen && !editorReadonly"
+				},
+				{
+					"command": "vertical-limit.insertAsColumn",
 					"when": "editorIsOpen && !editorReadonly"
 				}
 			]

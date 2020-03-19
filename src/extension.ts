@@ -1,11 +1,9 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-'use strict';
 import * as vscode from 'vscode';
 import * as blocks from './blocks';
 import * as enumerate from './enumerate';
 import * as movetonew from './movetonew';
 import * as compresslines from './compresslines';
+import * as column from './column';
 
 
 
@@ -54,6 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
 		inEditor('vertical-limit.moveUnsavedFileToClipboard', movetonew.moveUnsavedFileToClipboard),
 		inEditor('vertical-limit.compressLines', compresslines.compressLines),
 		inEditor('vertical-limit.uncompressLines', compresslines.uncompressLines),
+		inEditor('vertical-limit.insertAsColumn', column.insertAsColumn),
 	);
 }
 

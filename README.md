@@ -30,7 +30,13 @@ The user can provide:
 - the minimal number of how many times an enumeration should be inserted
 - a comma seperated alternativ list of enumerations
 
-### Move Selection to new File
+### Insert As Column
+
+The command inserts each line in the clipboard with a prefix and postfix. The prefix and postfix is the text of the cursors line before and after the cursor.
+
+The text `a|bc` with clipboard `1\n2\n3` evaluates to `a1|bc\na2|bc\na3|bc`.
+
+### Move Selection To New File
 
 Vertical Limit provides a command to move the selected text into a new unsaved file.
 For unsaved files Vertical Limit provides a command to cut all content into the clipboard and close the file.
