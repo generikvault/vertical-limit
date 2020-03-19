@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 export async function insertAsColumn(editor: vscode.TextEditor) {
     const { document } = editor
     const clipboard = await vscode.env.clipboard.readText()
-    const insert = clipboard.replace("\r", "").split("\n")
+    const insert = clipboard.split("\n")
 
     await editor.edit(edit =>
         editor.selections.forEach(sel =>
@@ -37,7 +37,7 @@ export async function insertAsColumn(editor: vscode.TextEditor) {
     await editor.edit(edit => {
         var i = 0
         editor.selections.forEach(sel => {
-            const s = insert[i++ % insert.length]
+            const s = insert[i++ % insert.length].replace("\r", "")
             edit.insert(sel.active, s)
         }
         )
