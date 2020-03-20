@@ -35,7 +35,7 @@ export async function insertAsColumn(editor: vscode.TextEditor) {
     })
     editor.selections = selections
     await editor.edit(edit => {
-        var i = 0
+        let i = 0
         editor.selections.forEach(sel => {
             const s = insert[i++ % insert.length].replace("\r", "")
             edit.insert(sel.active, s)
