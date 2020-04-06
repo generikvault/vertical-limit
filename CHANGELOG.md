@@ -4,6 +4,12 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.8.2] - 2020-04-06
+
+### Changed
+
+- Added insert as column command.
+
 ## [1.8.0] - 2020-03-19
 
 ### Changed
