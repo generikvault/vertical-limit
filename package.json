@@ -1,7 +1,7 @@
 {
 	"name": "vertical-limit",
 	"displayName": "Vertical Limit",
-	"description": "Vertical Limit is a collection of commands to modify, select and navigate text blocks in order to unlock the full potential of working with multiple cursors.",
+	"description": "Navigate the cursor semantically up and down, select and modify text with powerful commands optimized for the use with multi cursors.",
 	"version": "1.8.2",
 	"engines": {
 		"vscode": "^1.42.0"
