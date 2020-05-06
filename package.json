@@ -4,7 +4,7 @@
 	"description": "Navigate the cursor semantically up and down, select and modify text with powerful commands optimized for the use with multi cursors.",
 	"version": "1.8.2",
 	"engines": {
-		"vscode": "^1.42.0"
+		"vscode": "^1.44.0"
 	},
 	"categories": [
 		"Other"
@@ -214,6 +214,21 @@
 					"when": "editorIsOpen && !editorReadonly"
 				}
 			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Vertical Limit",
+			"properties": {
+				"vertical-limit.blockPrefixIndicators":{
+					"type": "array",
+					"items": {
+					  "type": "string"
+					},
+					"default": [],
+					"description": "sdfghjkl",
+					"scope": "resource"
+				}
+			}
 		}
 	},
 	"scripts": {

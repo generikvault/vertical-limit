@@ -18,8 +18,8 @@ export async function insertAsColumn(editor: vscode.TextEditor) {
     await editor.edit(edit =>
         lines.forEach(i => {
             let line = document.lineAt(i).text
-            let extended = ("\n" + line).repeat(insert.length - 1)
-            edit.insert(new vscode.Position(i, line.length), extended)
+            let extended = (line + "\n").repeat(insert.length - 1)
+            edit.replace(new vscode.Position(i, 0), extended)
         }),
         {
             undoStopBefore: false,
@@ -29,7 +29,7 @@ export async function insertAsColumn(editor: vscode.TextEditor) {
     let selections: vscode.Selection[] = []
     editor.selections.forEach(sel => {
         for (let i = 0; i < insert.length; i++) {
-            const pos = new vscode.Position(sel.active.line + i, sel.active.character)
+            const pos = new vscode.Position(sel.active.line + i - insert.length + 1, sel.active.character)
             selections.push(new vscode.Selection(pos, pos))
         }
     })
