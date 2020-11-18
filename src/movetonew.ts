@@ -3,10 +3,10 @@
 import * as vscode from 'vscode';
 
 export async function moveSelectionToNewFile(editor: vscode.TextEditor) {
-    const { selection, document } = editor
-    const text = document.getText(selection)
+    const { selections, document } = editor
+    const text = selections.map(selection => document.getText(selection)).join("\n")
 
-    await editor.edit(edit => edit.delete(selection))
+    await editor.edit(edit => selections.forEach(selection => edit.delete(selection)))
 
     var destination = await vscode.workspace.openTextDocument({ language: document.languageId, content: text })
     vscode.window.showTextDocument(destination)

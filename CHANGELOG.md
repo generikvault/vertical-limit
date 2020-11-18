@@ -4,6 +4,12 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.9.0] - 2020-11-18
+
+### Changed
+
+- Added multi cursor support for move selection to new file command.
+
 ## [1.8.3] - 2020-05-06
 
 ### Fixed
