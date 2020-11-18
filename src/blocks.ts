@@ -2,7 +2,6 @@
 // Import the module and reference it with the alias vscode in your code below
 'use strict';
 import * as vscode from 'vscode';
-import { runInThisContext } from 'vm';
 
 export function moveCursorFirstBlockLine(editor: Editor) {
 	editor.selections = editor.selections.map(selection => {

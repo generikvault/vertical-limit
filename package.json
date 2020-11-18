@@ -1,7 +1,7 @@
 {
 	"name": "vertical-limit",
 	"displayName": "Vertical Limit",
-	"description": "Navigate the cursor semantically up and down, select and modify text with powerful commands optimized for the use with multi cursors.",
+	"description": "Navigate cursors semantically up and down, select and modify text with powerful commands optimized for the use with multi cursors.",
 	"version": "1.8.3",
 	"engines": {
 		"vscode": "^1.44.0"
