@@ -4,6 +4,12 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.9.1] - 2020-11-20
+
+### Changed
+
+- Added example gifs into readme.
+
 ## [1.9.0] - 2020-11-18
 
 ### Changed

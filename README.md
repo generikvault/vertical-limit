@@ -14,10 +14,15 @@ Vertical Limit provides cursor navigation commands to:
 - select text until the last line of a block.
 - insert cursors until the first line of a block.
 - insert cursors until the last line of a block.
+
+![example](img/UpDown.gif)
+
 - move cursor to begin of block.
 - move cursor to end of block.
 - extend selection to begin of block.
 - extend selection to end of block.
+
+![example](img/BeginEnd.gif)
 
 ### Enumerate
 
@@ -32,9 +37,9 @@ The user can provide:
 
 ### Insert As Column
 
-The command inserts each line in the clipboard with a prefix and postfix. The prefix and postfix is the text of the cursors line before and after the cursor.
+The command inserts each line in the clipboard with a prefix and postfix. The prefix and postfix is the text of the cursors line before and after the cursor. If there are multiple cursors in a line the cliboard line will be inserted for each cursor.
 
-The text `a|bc` with clipboard `1\n2\n3` evaluates to `a1|bc\na2|bc\na3|bc`.
+![example](img/InsertAsColumn.gif)
 
 ### Move Selection To New File
 
