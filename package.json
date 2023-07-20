@@ -4,7 +4,7 @@
 	"description": "Navigate cursors semantically up and down, select and modify text with powerful commands optimized for the use with multi cursors.",
 	"version": "1.9.1",
 	"engines": {
-		"vscode": "^1.44.0"
+		"vscode": "^1.80.0"
 	},
 	"categories": [
 		"Other"
@@ -15,24 +15,7 @@
 		"url": "https://github.com/generikvault/vertical-limit"
 	},
 	"icon": "icon.png",
-	"activationEvents": [
-		"onCommand:vertical-limit.moveCursorFirstBlockLine",
-		"onCommand:vertical-limit.moveCursorLastBlockLine",
-		"onCommand:vertical-limit.selectUntilBlockFirstLine",
-		"onCommand:vertical-limit.selectUntilBlockLastLine",
-		"onCommand:vertical-limit.insertCursorsUntilFirstBlockLine",
-		"onCommand:vertical-limit.insertCursorsUntilLastBlockLine",
-		"onCommand:vertical-limit.moveCursorToBlockBegin",
-		"onCommand:vertical-limit.moveCursorToBlockEnd",
-		"onCommand:vertical-limit.selectUntilBlockBegin",
-		"onCommand:vertical-limit.selectUntilBlockEnd",
-		"onCommand:vertical-limit.enumerate",
-		"onCommand:vertical-limit.moveSelectionToNewFile",
-		"onCommand:vertical-limit.moveUnsavedFileToClipboard",
-		"onCommand:vertical-limit.compressLines",
-		"onCommand:vertical-limit.uncompressLines",
-		"onCommand:vertical-limit.insertAsColumn"
-	],
+	"activationEvents": [],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
@@ -179,6 +162,10 @@
 				},
 				{
 					"command": "vertical-limit.selectUntilBlockLastLine",
+					"when": "editorIsOpen"
+				},
+				{
+					"command": "vertical-limit.expandBlockSelection",
 					"when": "editorIsOpen"
 				},
 				{

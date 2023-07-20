@@ -1,18 +1,18 @@
-import * as vscode from 'vscode';
-import * as blocks from './blocks';
-import * as enumerate from './enumerate';
-import * as movetonew from './movetonew';
-import * as compresslines from './compresslines';
-import * as column from './column';
+import * as vscode from 'vscode'
+import * as blocks from './blocks'
+import * as enumerate from './enumerate'
+import * as movetonew from './movetonew'
+import * as compresslines from './compresslines'
+import * as column from './column'
 
 
 
 function inBlockEditor(name: string, fn: (editor: blocks.Editor) => void): vscode.Disposable {
-	let cmd = ()=> {
-		let editor = vscode.window.activeTextEditor;
+	let cmd = () => {
+		let editor = vscode.window.activeTextEditor
 
 		if (editor == null) {
-			return;
+			return
 		}
 		fn(new blocks.Editor(editor))
 	}
@@ -21,11 +21,11 @@ function inBlockEditor(name: string, fn: (editor: blocks.Editor) => void): vscod
 }
 
 function inEditor(name: string, fn: (editor: vscode.TextEditor) => void): vscode.Disposable {
-	let cmd = ()=> {
-		let editor = vscode.window.activeTextEditor;
+	let cmd = () => {
+		let editor = vscode.window.activeTextEditor
 
 		if (editor == null) {
-			return;
+			return
 		}
 		fn(editor)
 	}
@@ -53,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 		inEditor('vertical-limit.compressLines', compresslines.compressLines),
 		inEditor('vertical-limit.uncompressLines', compresslines.uncompressLines),
 		inEditor('vertical-limit.insertAsColumn', column.insertAsColumn),
-	);
+	)
 }
 
 // this method is called when your extension is deactivated
