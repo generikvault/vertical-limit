@@ -1,10 +1,10 @@
 
-'use strict';
-import * as vscode from 'vscode';
+'use strict'
+import * as vscode from 'vscode'
 
 export async function compressLines(editor: vscode.TextEditor) {
-    const input = await showInputBox(editor);
-    if (input == null) {
+    const input = await showInputBox(editor)
+    if (input === undefined) {
         return
     }
     var { prefixExp, seperator } = input
@@ -14,13 +14,13 @@ export async function compressLines(editor: vscode.TextEditor) {
     for (var i = 0; i < lineCount; i++) {
         var text = document.lineAt(i).text
         var match = prefixExp.exec(text)
-        if (!match) continue
+        if (!match) { continue }
         var prefix = match[0]
 
         for (var j = i + 1; j < lineCount; j++) {
             var toCompress = document.lineAt(j).text
             if (!hasPrefix(toCompress, prefix)) {
-                break;
+                break
             }
             text += seperator + removePrefix(toCompress, prefix)
         }
@@ -30,11 +30,11 @@ export async function compressLines(editor: vscode.TextEditor) {
         }
         i = j
     }
-    editor.edit(e=>deltas.apply(e))
+    editor.edit(e => deltas.apply(e))
 }
 export async function uncompressLines(editor: vscode.TextEditor) {
-    const input = await showInputBox(editor);
-    if (input == null) {
+    const input = await showInputBox(editor)
+    if (input === undefined) {
         return
     }
     var { prefixExp, seperator } = input
@@ -44,13 +44,13 @@ export async function uncompressLines(editor: vscode.TextEditor) {
     for (var i = 0; i < lineCount; i++) {
         var text = document.lineAt(i).text
         var match = prefixExp.exec(text)
-        if (!match) continue
+        if (!match) { continue }
         var prefix = match[0]
         var segments = removePrefix(text, prefix).split(seperator)
         var lines = segments.map(s => prefix + s).join("\n")
         deltas.push(i, i, lines)
     }
-    editor.edit(e=>deltas.apply(e))
+    editor.edit(e => deltas.apply(e))
 }
 
 class Deltas {
@@ -73,7 +73,7 @@ class Deltas {
                 new vscode.Position(to, this.document.lineAt(to).text.length)
             )
             edit.replace(range, text)
-        });
+        })
     }
 }
 
@@ -94,14 +94,13 @@ function initValue(s: string): { initPrefix: string, initSeperator: string } {
     var initSeperator = ""
     while (s.length > 0) {
         var match = selectionPrefixRecognitionPattern.exec(s)
-        if (!match)
-            return { initPrefix: "", initSeperator: "" }
+        if (!match) { return { initPrefix: "", initSeperator: "" } }
         s = removePrefix(s, match[0])
         initSeperator = match[3]
         var symbols = match[3].split('').map(s => "\\" + s).join()
         initPrefix += "[^" + symbols.substring(0, 2) + "]+" + symbols
     }
-    return {initPrefix, initSeperator}
+    return { initPrefix, initSeperator }
 }
 
 async function showInputBox(editor: vscode.TextEditor): Promise<{ prefixExp: RegExp; seperator: string } | undefined> {
@@ -117,24 +116,23 @@ async function showInputBox(editor: vscode.TextEditor): Promise<{ prefixExp: Reg
         prompt: "Enter a regex matching the prefix' that should be compressed",
         validateInput: input => {
             try {
-                if (input.substring(0, 1) != "^")
-                    input = "^" + input
+                if (input.substring(0, 1) !== "^") { input = "^" + input }
                 new RegExp(input)
             }
             catch (e) {
-                return e.toString()
+                return e instanceof Error ? e.message : String(e)
             }
         }
-    });
-    if (input == null) {
+    })
+    if (input === undefined) {
         return Promise.resolve(undefined)
     }
     const seperator = await vscode.window.showInputBox({
         value: init.initSeperator,
         placeHolder: ";",
         prompt: "Enter a seperator for the compressed segments. The result will be <prefix><segment1><seperator><segment2>...",
-    });
-    if (seperator == null) {
+    })
+    if (seperator === undefined) {
         return Promise.resolve(undefined)
     }
 

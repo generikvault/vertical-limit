@@ -2,9 +2,9 @@
 	"name": "vertical-limit",
 	"displayName": "Vertical Limit",
 	"description": "Navigate cursors semantically up and down, select and modify text with powerful commands optimized for the use with multi cursors.",
-	"version": "1.9.1",
+	"version": "1.9.2",
 	"engines": {
-		"vscode": "^1.80.0"
+		"vscode": "^1.116.0"
 	},
 	"categories": [
 		"Other"
@@ -221,22 +221,21 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
+		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^7.0.1",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.42.0",
-		"eslint": "^6.8.0",
-		"@typescript-eslint/parser": "^2.18.0",
-		"@typescript-eslint/eslint-plugin": "^2.18.0",
-		"glob": "^7.1.6",
-		"mocha": "^10.2.0",
-		"typescript": "^3.7.5",
-		"vscode-test": "^1.3.0"
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^25.6.0",
+		"@types/vscode": "^1.116.0",
+		"@typescript-eslint/eslint-plugin": "^8.58.2",
+		"@typescript-eslint/parser": "^8.58.2",
+		"@vscode/test-electron": "^2.5.2",
+		"eslint": "^10.2.0",
+		"glob": "^13.0.6",
+		"mocha": "^11.7.5",
+		"typescript": "^6.0.2"
 	}
 }

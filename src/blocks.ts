@@ -1,13 +1,13 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-'use strict';
-import * as vscode from 'vscode';
+'use strict'
+import * as vscode from 'vscode'
 
 export function moveCursorFirstBlockLine(editor: Editor) {
 	editor.selections = editor.selections.map(selection => {
 		var bp = editor.blockPosition(selection.start)
 
-		while (bp.dec());
+		while (bp.dec()) {  }
 		return bp.selection
 	})
 	editor.revealActiveCursor()
@@ -17,7 +17,7 @@ export function moveCursorLastBlockLine(editor: Editor) {
 	editor.selections = editor.selections.map(selection => {
 		var bp = editor.blockPosition(selection.end)
 
-		while (bp.inc());
+		while (bp.inc()) {  }
 		return bp.selection
 	})
 	editor.revealActiveCursor()
@@ -27,7 +27,7 @@ export function selectUntilBlockFirstLine(editor: Editor) {
 	editor.selections = editor.selections.map(selection => {
 		var bp = editor.blockPosition(selection.start)
 
-		while (bp.dec());
+		while (bp.dec()) {  }
 		return new vscode.Selection(selection.end, bp.position)
 	})
 	editor.revealActiveCursor()
@@ -37,7 +37,7 @@ export function selectUntilBlockLastLine(editor: Editor) {
 	editor.selections = editor.selections.map(selection => {
 		var bp = editor.blockPosition(selection.end)
 
-		while (bp.inc());
+		while (bp.inc()) {  }
 		return new vscode.Selection(selection.start, bp.position)
 	})
 	editor.revealActiveCursor()
@@ -78,9 +78,9 @@ export function selectUntilBlockEnd(editor: Editor) {
 export function insertCursorsUntilFirstBlockLine(editor: Editor) {
 	var bp = editor.blockPosition(editor.firstSelectedPosition)
 
-	while (bp.dec())
-		if (bp.inside)
-			editor.selections.push(bp.selection)
+	while (bp.dec()) {
+		if (bp.inside) { editor.selections.push(bp.selection) }
+	}
 
 	editor.selections = editor.selections
 	editor.revealMostRecentSelection()
@@ -89,9 +89,9 @@ export function insertCursorsUntilFirstBlockLine(editor: Editor) {
 export function insertCursorsUntilLastBlockLine(editor: Editor) {
 	var bp = editor.blockPosition(editor.lastSelectedPosition)
 
-	while (bp.inc())
-		if (bp.inside)
-			editor.selections.push(bp.selection)
+	while (bp.inc()) {
+		if (bp.inside) { editor.selections.push(bp.selection) }
+	}
 
 	editor.selections = editor.selections
 	editor.revealMostRecentSelection()
@@ -105,7 +105,7 @@ export class Editor {
 	}
 
 	public get selections(): vscode.Selection[] {
-		return this.editor.selections
+		return [...this.editor.selections]
 	}
 
 	public set selections(selections: vscode.Selection[]) {
@@ -149,7 +149,7 @@ export class Editor {
 		} else {
 			return this.firstOuterBlockPosition(bp)
 		}
-		while (bp.dec());
+		while (bp.dec()) {  }
 		return new vscode.Position(bp.line, 0)
 	}
 
@@ -158,17 +158,16 @@ export class Editor {
 		var lastOriginalLine: number = NaN
 		bp.indent--
 		while (bp.dec() && !bp.inside) {
-			if (bp.indentAt(bp.line) == original) {
+			if (bp.indentAt(bp.line) === original) {
 				lastOriginalLine = bp.line
 			} else if (bp.indent > bp.indentAt(bp.line)) {
 				bp.inside = true
 				bp.indent = bp.indentAt(bp.line)
 			}
 		}
-		if (!isNaN(lastOriginalLine))
-			return new vscode.Position(lastOriginalLine, 0)
+		if (!isNaN(lastOriginalLine)) { return new vscode.Position(lastOriginalLine, 0) }
 
-		while (bp.dec());
+		while (bp.dec()) {  }
 		return new vscode.Position(bp.line, 0)
 	}
 
@@ -193,22 +192,21 @@ export class Editor {
 		var lastOriginalLine: number = NaN
 		bp.indent--
 		while (bp.inc() && !bp.inside) {
-			if (bp.indentAt(bp.line) == original) {
+			if (bp.indentAt(bp.line) === original) {
 				lastOriginalLine = bp.line
 			} else if (bp.indent > bp.indentAt(bp.line)) {
 				bp.inside = true
 				bp.indent = bp.indentAt(bp.line)
 			}
 		}
-		if (!isNaN(lastOriginalLine))
-			return this.lastPosition(lastOriginalLine)
+		if (!isNaN(lastOriginalLine)) { return this.lastPosition(lastOriginalLine) }
 
-		while (bp.inc());
+		while (bp.inc()) {  }
 		return this.lastPosition(bp.line)
 	}
 
-	private lastPosition(line:number):vscode.Position{
-		return new vscode.Position(line, this.editor.document.lineAt(line).text.length) 
+	private lastPosition(line: number): vscode.Position {
+		return new vscode.Position(line, this.editor.document.lineAt(line).text.length)
 	}
 }
 
@@ -228,22 +226,19 @@ class BlockPosition {
 
 	inc(): boolean {
 		let line = this.line + 1
-		if (line >= this.doc.lineCount)
-			return false
+		if (line >= this.doc.lineCount) { return false }
 		return this.jump(line)
 	}
 
 	dec(): boolean {
 		let line = this.line - 1
-		if (line < 0)
-			return false
+		if (line < 0) { return false }
 		return this.jump(line)
 	}
 
 	private jump(line: number): boolean {
-		let matchs = this.indentAt(line) == this.indent
-		if (!matchs && this.inside)
-			return false
+		let matchs = this.indentAt(line) === this.indent
+		if (!matchs && this.inside) { return false }
 
 		this.inside = this.inside || matchs
 		this.line = line
@@ -252,18 +247,17 @@ class BlockPosition {
 
 	indentAt(line: number): number {
 		let s = this.doc.lineAt(line)
-		if (s.isEmptyOrWhitespace)
-			return -1
+		if (s.isEmptyOrWhitespace) { return -1 }
 		return s.firstNonWhitespaceCharacterIndex
 	}
 
 	get position(): vscode.Position {
-		return new vscode.Position(this.line, this.pos.character);
+		return new vscode.Position(this.line, this.pos.character)
 	}
 
 	get selection(): vscode.Selection {
 		var pos = this.position
-		return new vscode.Selection(pos, pos);
+		return new vscode.Selection(pos, pos)
 	}
 
 }

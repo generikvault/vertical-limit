@@ -15,12 +15,13 @@ export async function enumerate(editor: vscode.TextEditor) {
         prompt: readableInputPattern,
         validateInput: input => {
             var parsed = enumeration(input)
-            if (typeof parsed == "string")
+            if (typeof parsed === "string") {
                 return parsed
+            }
             return null
         }
     });
-    if (input == null) {
+    if (input === undefined) {
         return
     }
     var enums = enumeration(input) as Enumeration
@@ -49,10 +50,10 @@ export async function enumerate(editor: vscode.TextEditor) {
 
         var fixmeLine = endLine + missingSelections * lineNumber
         var selections = editor.selections.map(sel =>{
-            if (sel.end.line == fixmeLine){
+            if (sel.end.line === fixmeLine){
                 return new vscode.Selection(
-                    new vscode.Position(sel.anchor.line == fixmeLine ? endLine : sel.anchor.line, sel.anchor.character),
-                    new vscode.Position(sel.active.line == fixmeLine ? endLine : sel.active.line, sel.active.character),
+                    new vscode.Position(sel.anchor.line === fixmeLine ? endLine : sel.anchor.line, sel.anchor.character),
+                    new vscode.Position(sel.active.line === fixmeLine ? endLine : sel.active.line, sel.active.character),
                 )
             }
             return sel
@@ -73,7 +74,7 @@ export async function enumerate(editor: vscode.TextEditor) {
             editBuilder.replace(sel, enums.value(i++)))
     },
         {
-            undoStopBefore: missingSelections == 0,
+            undoStopBefore: missingSelections === 0,
             undoStopAfter: true,
         },
     );
@@ -86,7 +87,7 @@ interface Enumeration {
 
 function enumeration(input: string): Enumeration | string {
     var args = enumerateInputPattern.exec(input)
-    if (args == null) {
+    if (args === null) {
         return listing(input)
     }
 
@@ -104,7 +105,7 @@ function parseIntFlag(s: string | undefined, def: number): number {
     if (!s || s.length < 1) {
         return def
     }
-    return parseIntValue(s.substr(1), def)
+    return parseIntValue(s.slice(1), def)
 }
 
 function parseIntValue(s: string | undefined, def: number): number {
@@ -120,7 +121,7 @@ function parseIntValue(s: string | undefined, def: number): number {
 
 function listing(input: string): Enumeration | string {
     var args = listingInputPattern.exec(input)
-    if (args == null || !(args[1])) {
+    if (args === null || !(args[1])) {
         return readableInputPattern
     }
 
@@ -164,8 +165,9 @@ function initValue(editor: vscode.TextEditor): string {
 
 function matchs<T>(list: T[], fn: (entry: T) => boolean): boolean {
     for (var i = 0; i < list.length; i++) {
-        if (!fn(list[i]))
+        if (!fn(list[i])) {
             return false
+        }
     }
     return true
 }

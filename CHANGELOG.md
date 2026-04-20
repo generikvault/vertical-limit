@@ -4,6 +4,12 @@ All notable changes to the "vertical-limit" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.9.2] - 2026-04-16
+
+### Changed
+
+- Updated dependencies.
+
 ## [1.9.1] - 2020-11-20
 
 ### Changed

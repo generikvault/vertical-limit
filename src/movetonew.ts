@@ -14,7 +14,9 @@ export async function moveSelectionToNewFile(editor: vscode.TextEditor) {
 
 export async function moveUnsavedFileToClipboard(editor: vscode.TextEditor) {
     const { document } = editor
-    if (!document.isUntitled) return
+    if (!document.isUntitled) {
+        return
+    }
 
     const linePos = document.lineCount - 1
     const charPos = document.lineAt(linePos).text.length

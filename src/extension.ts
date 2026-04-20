@@ -11,7 +11,7 @@ function inBlockEditor(name: string, fn: (editor: blocks.Editor) => void): vscod
 	let cmd = () => {
 		let editor = vscode.window.activeTextEditor
 
-		if (editor == null) {
+		if (editor === undefined) {
 			return
 		}
 		fn(new blocks.Editor(editor))
@@ -24,7 +24,7 @@ function inEditor(name: string, fn: (editor: vscode.TextEditor) => void): vscode
 	let cmd = () => {
 		let editor = vscode.window.activeTextEditor
 
-		if (editor == null) {
+		if (editor === undefined) {
 			return
 		}
 		fn(editor)
